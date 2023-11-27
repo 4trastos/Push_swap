@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/19 11:24:51 by davgalle          #+#    #+#             */
-/*   Updated: 2023/11/21 15:10:07 by davgalle         ###   ########.fr       */
+/*   Created: 2023/11/25 18:42:24 by davgalle          #+#    #+#             */
+/*   Updated: 2023/11/27 19:39:04 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,35 @@
 
 int	main(int argc, char *argv[])
 {
-	t_stack_node	*a;
-	t_stack_node	*b;
+	int				i;
+	int				j;
+	int				content;
+	char			**str;
 
-	a = NULL;
-	b = NULL;
-	if (argc == 1  || (argc == 2 && !argv[1][0]))
-		return (1);
-	else if (argc == 2)
-		argv = ft_split(argv[1], ' ');
-	stack_init(&a, argv + 1, argc == 2)
-	if (!stack_sorted(a))
+	i = 1;
+	if (argc == 1)
+		return (0);
+	if (argc > 1)
 	{
-		if (stack_len == 2)
-			sa(&a, false);
-		else if (stack_len == 3)
-			tiny_short(&a);
-		else
-			push_swap(&a, &b);
+		while (i < argc)
+		{
+			str = ft_split(argv[i], ' ');
+			j = 0;
+			while (str[j] != NULL)
+			{
+				if (!ft_check_arguments(str[j]))
+				{
+					ft_free_string(str);
+					exit (1);
+				}
+				content = ft_atoi(str[j]);
+				ft_create_node(content);
+//				else
+//					printf("String Ok: %s\n", str[j]);
+				j++;
+			}
+			i++;
+		}
 	}
-	free_stack(&a);
+	return (0);
 }

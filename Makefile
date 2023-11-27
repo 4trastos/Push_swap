@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: davgalle <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/11/18 15:34:52 by davgalle          #+#    #+#              #
-#    Updated: 2023/11/21 15:14:40 by davgalle         ###   ########.fr        #
+#    Created: 2023/11/27 17:25:23 by davgalle          #+#    #+#              #
+#    Updated: 2023/11/27 19:25:52 by davgalle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,25 +14,16 @@ NAME = push_swap
 
 CC = gcc
 
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g3
 
 RM = rm -f
 
-SRCS = errors_free.c \
-	   ft_split.c \
-       main.c \
-	   push_command.c \
-	   push_swap.c \
-	   push_swap_command.c \
-	   push_swap_init.c \
-	   reverse_rotate_command.c \
-	   rotate_command.c \
-	   stack_init.c \
-	   stack_utils.c \
-	   swap_command.c \
-	   tiny_short.c
-
 LIB = ar rcs
+
+SRCS = main.c \
+	   ft_splitdav.c \
+	   ft_checker.c \
+	   ft_free_strings.c
 
 OBJTS = $(SRCS:.c=.o)
 
@@ -47,7 +38,6 @@ clean:
 fclean: clean
 	$(RM) $(NAME)
 
-re: fclean all
+re: all clean
 
 .PHONY: all clean fclean re
-
