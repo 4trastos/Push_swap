@@ -6,7 +6,7 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 18:42:24 by davgalle          #+#    #+#             */
-/*   Updated: 2023/11/28 19:34:22 by davgalle         ###   ########.fr       */
+/*   Updated: 2023/11/29 20:02:03 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,12 @@ int	main(int argc, char *argv[])
 		while (i < argc)
 		{
 			str = ft_split(argv[i], ' ');
+			int x = 0;
+			while (str[x] != NULL)
+			{
+				printf("%s\n", str[x]);
+				x++;
+			}
 			j = 0;
 			while (str[j] != NULL)
 			{
@@ -41,8 +47,7 @@ int	main(int argc, char *argv[])
 				}
 				content = ft_atoi_dav(str[j]);
 				ft_stack_node(&a, ft_create_node(content));
-				ft_print_content(a);
-				printf("%i\n", a->content);
+//				printf("%i\n", a->content);
 				j++;
 			}
 			i++;

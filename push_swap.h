@@ -6,7 +6,7 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 16:34:28 by davgalle          #+#    #+#             */
-/*   Updated: 2023/11/28 19:05:38 by davgalle         ###   ########.fr       */
+/*   Updated: 2023/11/29 18:59:41 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int		ft_atoi_dav(char *str);
 
 t_stack_node	*ft_create_node(int content);
 void	ft_stack_node(t_stack_node **a, t_stack_node *new);
-int		ft_print_content(t_stack_node *lst);
+//int		ft_print_content(t_stack_node *a);
 
 //*** checker ***
 
@@ -49,6 +49,7 @@ int		ft_check_arguments(char *s);
 //*** errros ***
 
 char	**ft_free_string(char **str);
-int		ft_repeat_content(t_stack_node *a, t_stack_node *new);
+int		ft_repeat_content(t_stack_node **a, int content);
+void	ft_cleanlist(t_stack_node **a);
 
 #endif
