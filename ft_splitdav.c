@@ -6,13 +6,13 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 14:13:10 by davgalle          #+#    #+#             */
-/*   Updated: 2023/11/27 18:49:16 by davgalle         ###   ########.fr       */
+/*   Updated: 2023/11/28 12:43:12 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-char	**ft_empty_split(void)
+static char	**ft_empty_split(void)
 {
 	char	**aux;
 
@@ -23,7 +23,7 @@ char	**ft_empty_split(void)
 	return (aux);
 }
 
-char	**ft_free_str(char **str)
+static char	**ft_free_str(char **str)
 {
 	int	i;
 
@@ -37,7 +37,7 @@ char	**ft_free_str(char **str)
 	return (NULL);
 }
 
-char	*ft_words_complete(const char *str, int number)
+static char	*ft_words_complete(const char *str, int number)
 {
 	int		i;
 	char	*line;
@@ -55,7 +55,7 @@ char	*ft_words_complete(const char *str, int number)
 	return (line);
 }
 
-int	ft_words(char const *str, char c)
+static int	ft_words(char const *str, char c)
 {
 	int	i;
 	int	z;

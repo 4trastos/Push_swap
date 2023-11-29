@@ -6,7 +6,7 @@
 #    By: davgalle <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/27 17:25:23 by davgalle          #+#    #+#              #
-#    Updated: 2023/11/27 19:25:52 by davgalle         ###   ########.fr        #
+#    Updated: 2023/11/28 16:37:29 by davgalle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,9 @@ LIB = ar rcs
 SRCS = main.c \
 	   ft_splitdav.c \
 	   ft_checker.c \
-	   ft_free_strings.c
+	   ft_free_strings.c \
+	   ft_atoi_dav.c \
+	   ft_create_node.c
 
 OBJTS = $(SRCS:.c=.o)
 

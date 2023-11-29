@@ -6,22 +6,36 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 17:37:20 by davgalle          #+#    #+#             */
-/*   Updated: 2023/11/27 18:10:19 by davgalle         ###   ########.fr       */
+/*   Updated: 2023/11/28 15:42:40 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_check_arguments(char *str)
+int	ft_check_arguments(char *s)
 {
 	int	i;
+	int	neg;
 
 	i = 0;
-	while (str[i] != '\0')
+	neg = 0;
+	while (s[i] != '\0')
 	{
-		if ((str[i] >= 'a' && str[i] <= 'z') || (str[i] >= 'A' && str[i] <= 'Z'))
-			return (0);
+		if (s[i] == '-')
+			neg++;
+		if (s[i] == '-' && s[i + 1] >= '1' && s[i + 1] <= '9')
+			i++;
+		if ((s[i] >= 'a' && s[i] <= 'z') || (s[i] >= 'A' && s[i] <= 'Z'))
+			return (1);
+		if ((s[i] >= 32 && s[i] <= 47) || (s[i] >= 58 && s[i] <= 64))
+			return (1);
+		if ((s[i] >= 91 && s[i] <= 96) || (s[i] >= 123 && s[i] <= 126))
+			return (1);
 		i++;
 	}
-	return (1);
+	if (neg > 1)
+		return (1);
+	if (neg == 1 && s[0] != '-')
+		return (1);
+	return (0);
 }

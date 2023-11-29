@@ -6,7 +6,7 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 16:34:28 by davgalle          #+#    #+#             */
-/*   Updated: 2023/11/27 18:49:01 by davgalle         ###   ########.fr       */
+/*   Updated: 2023/11/28 19:05:38 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,24 @@ typedef struct s_stack_node
 
 int		main(int argc, char *argv[]);
 
-//*** create nodes ***
+//*** create content nodes ***
 
 char	**ft_split(const char *str, char c);
+int		ft_atoi_dav(char *str);
+
+//*** create nodes ***
+
+t_stack_node	*ft_create_node(int content);
+void	ft_stack_node(t_stack_node **a, t_stack_node *new);
+int		ft_print_content(t_stack_node *lst);
 
 //*** checker ***
 
-int		ft_check_arguments(char *str);
+int		ft_check_arguments(char *s);
 
 //*** errros ***
 
 char	**ft_free_string(char **str);
+int		ft_repeat_content(t_stack_node *a, t_stack_node *new);
 
 #endif
