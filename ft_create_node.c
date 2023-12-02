@@ -6,7 +6,7 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 16:26:46 by davgalle          #+#    #+#             */
-/*   Updated: 2023/11/29 19:50:41 by davgalle         ###   ########.fr       */
+/*   Updated: 2023/11/30 16:31:49 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void    ft_cleanlist(t_stack_node **a)
     aux = *a;
     while (aux)
     {
-        printf("nodo a borrar: %i\n", aux->content);
+//       printf("nodo a borrar: %i\n", aux->content);
         *a = aux->next;
-		printf("Valor a borrar: %i\n", aux->content);
+//		printf("Valor a borrar: %i\n", aux->content);
         free (aux);
         aux = *a;
     }
@@ -45,24 +45,6 @@ int	ft_repeat_content(t_stack_node **a, int content)
 	}
 	return (0);
 }
-/*
-int	ft_print_content(t_stack_node *a)
-{
-	int		i;
-	t_stack_node	*aux;
-
-	i = 1;
-	if (!a)
-		return (0);
-	aux = a;
-	while (aux->next != NULL)
-	{
-		aux = aux->next;
-		i++;
-	}
-//	printf("Numero de Nodos: %i\n", i);
-	return (i);
-}*/
 
 void	ft_stack_node(t_stack_node **a, t_stack_node *new)
 {
@@ -72,19 +54,17 @@ void	ft_stack_node(t_stack_node **a, t_stack_node *new)
 		new->next = NULL;
 		return ;
 	}
-	new->next = *a;
 	if (ft_repeat_content(a, new->content))
 	{
 		ft_cleanlist(a);
-		printf("Contenido duplicado y borrado: %i\n", new->content);
+//		printf("Contenido duplicado y borrado: %i\n", new->content);
+		free (new);
+//		printf("Nodo duplicado sin apilar NO liberada memoria: %i\n", new->content);
+//		printf("Nodo duplicado sin apilar liberada memoria: Si\n");
 		exit(1);
 	}
+	new->next = *a;
 	*a = new;
-/*	if (ft_repeat_content(a, new->content))
-	{
-		ft_cleanlist(a);
-		printf("Contenido duplicado y borrado: %i\n", new->content);
-	}*/
 }
 
 t_stack_node	*ft_create_node(int content)

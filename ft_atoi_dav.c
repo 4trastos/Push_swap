@@ -6,13 +6,13 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 19:57:43 by davgalle          #+#    #+#             */
-/*   Updated: 2023/11/28 12:57:42 by davgalle         ###   ########.fr       */
+/*   Updated: 2023/11/30 15:15:45 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	ft_count(char *str, int i)
+int	ft_count(char *str, int i, int *status)
 {
 	int	num;
 	long long	result;
@@ -25,11 +25,11 @@ static int	ft_count(char *str, int i)
 		i++;
 	}
 	if (result > INT_MAX || result < INT_MIN)
-		exit (1);
+		*status = 1;
 	return (result);
 }
 
-int	ft_atoi_dav(char *str)
+int	ft_atoi_dav(char *str, int *status)
 {
 	int	i;
 	int	z;
@@ -42,6 +42,6 @@ int	ft_atoi_dav(char *str)
 		z = -1;
 		i++;
 	}
-	number = ft_count(str, i);
+	number = ft_count(str, i, status);
 	return (number * z);
 }
