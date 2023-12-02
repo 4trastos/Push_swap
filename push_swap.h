@@ -6,7 +6,7 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 16:34:28 by davgalle          #+#    #+#             */
-/*   Updated: 2023/11/30 19:40:17 by davgalle         ###   ########.fr       */
+/*   Updated: 2023/12/02 19:07:59 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,17 +52,19 @@ int		ft_checksort(t_stack_node *a);
 
 void	**ft_free_string(char **str);
 void	ft_cleanlist(t_stack_node **a);
+void	ft_freelist(t_stack_node **a);
 
 //*** sort stack ***
 
-int		ft_sort_stack(t_stack_node **a);
+void		ft_sort_stack(t_stack_node **a);
 
 //*** movement swap ***
 
-
-
-
-
+//int	ft_pushswap(t_stack_node **a);
+void	ft_swap_content(t_stack_node *node1, t_stack_node *node2);
+void	ft_swap(t_stack_node **a);
+void	sa(t_stack_node **a);
+void	sb(t_stack_node **b);
 
 //*** movement push ***
 

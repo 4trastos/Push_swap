@@ -6,28 +6,56 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 18:42:24 by davgalle          #+#    #+#             */
-/*   Updated: 2023/11/30 20:20:49 by davgalle         ###   ########.fr       */
+/*   Updated: 2023/12/02 19:41:24 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_sort_stack(t_stack_node **a)
+void print_stack(t_stack_node *a)
 {
-	if (ft_checksort(*a))
+    while (a != NULL)
+    {
+        printf("%d\n", a->content);
+        a = a->next;
+    }
+}
+
+void	ft_sort_stack(t_stack_node **a)
+{
+	t_stack_node	*b;
+
+	b = NULL;
+	if (!ft_checksort(*a))
 	{
-		printf("Están ordenados y son más de uno \n");
-		exit (1);
+		if (ft_stacklen(*a) == 2)
+		{
+			printf("Hay 2 Nodos\n");
+			sa(a);
+		}
+		if (ft_stacklen(*a) == 3)
+		{
+			printf("Tiene 3 nodos\n");
+//			ft_pushswap(a);
+			exit (1);
+		}
+		if (ft_stacklen(*a) > 3)
+		{
+			printf("Hay mas de 3 nodos\n");
+//			ft_pushswap_long(a, &b);
+			exit (1);
+		}
 	}
 	else
-		printf("NO estan ordenasdos \n");
-		return (1);
+	{
+		printf("Están ordenados \n");
+		exit (1);
+	}
 }
 
 int	main(int argc, char *argv[])
 {
 	t_stack_node	*a;
-	t_stack_node	*b;
 	int				i;
 	int				j;
 	int				content;
@@ -35,9 +63,10 @@ int	main(int argc, char *argv[])
 	int				status;
 
 	a = NULL;
-	b = NULL;
 	status = 0;
 	i = 1;
+	if (argc <= 1)
+		exit (1);
 	if (argc > 1)
 	{
 		while (i < argc)
@@ -57,6 +86,8 @@ int	main(int argc, char *argv[])
 			i++;
 		}
 		ft_sort_stack(&a);
+		printf("Contenido del stack después de la ordenación:\n");
+        print_stack(a);
 	}
-	return (0);
+	ft_freelist(&a);
 }

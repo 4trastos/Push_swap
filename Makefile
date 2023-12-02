@@ -6,7 +6,7 @@
 #    By: davgalle <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/27 17:25:23 by davgalle          #+#    #+#              #
-#    Updated: 2023/11/28 16:37:29 by davgalle         ###   ########.fr        #
+#    Updated: 2023/12/02 13:33:58 by davgalle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,9 @@ SRCS = main.c \
 	   ft_checker.c \
 	   ft_free_strings.c \
 	   ft_atoi_dav.c \
-	   ft_create_node.c
+	   ft_create_node.c \
+	   ft_pushswap_long.c \
+	   ft_pushswap.c
 
 OBJTS = $(SRCS:.c=.o)
 

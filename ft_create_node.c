@@ -6,28 +6,42 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 16:26:46 by davgalle          #+#    #+#             */
-/*   Updated: 2023/11/30 16:31:49 by davgalle         ###   ########.fr       */
+/*   Updated: 2023/12/02 17:43:42 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void    ft_cleanlist(t_stack_node **a)
+void	ft_freelist(t_stack_node **a)
 {
-    t_stack_node    *aux;
+	t_stack_node	*aux;
 
-    aux = *a;
-    while (aux)
-    {
-//       printf("nodo a borrar: %i\n", aux->content);
-        *a = aux->next;
-//		printf("Valor a borrar: %i\n", aux->content);
-        free (aux);
-        aux = *a;
-    }
+	aux = *a;
+	while (aux)
+	{
+		*a = aux->next;
+		free (aux);
+		aux = *a;
+	}
 	*a = NULL;
-    write(1, "Error", 5);
-    write(1, "\n", 1);
+}
+
+void	ft_cleanlist(t_stack_node **a)
+{
+	t_stack_node	*aux;
+
+	aux = *a;
+	while (aux)
+	{
+//      printf("nodo a borrar: %i\n", aux->content);
+		*a = aux->next;
+//		printf("Valor a borrar: %i\n", aux->content);
+		free (aux);
+		aux = *a;
+	}
+	*a = NULL;
+	write(1, "Error", 5);
+	write(1, "\n", 1);
 }
 
 int	ft_repeat_content(t_stack_node **a, int content)
