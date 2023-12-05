@@ -6,15 +6,34 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 19:31:43 by davgalle          #+#    #+#             */
-/*   Updated: 2023/12/05 20:07:27 by davgalle         ###   ########.fr       */
+/*   Updated: 2023/12/05 20:41:59 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_push(t_stack_node **a, t_stack_node **b)
+void	ft_push(t_stack_node **dst, t_stack_node **src)
 {
+	t_stack_node	*aux;
 
+	aux = *src;
+	if (*src == NULL)
+		return ;
+	*src = (*src)->next;
+	if (*src)
+		(*src)->prev = NULL;
+	aux->prev = NULL;
+	if (*dst == NULL)
+	{
+		*dst = aux;
+		aux->next = NULL;
+	}
+	else
+	{
+		aux->next = *dst;
+		aux->next->prev = aux;
+		*dst = aux;
+	}
 }
 
 void	pa(t_stack_node **a, t_stack_node **b)
@@ -22,7 +41,7 @@ void	pa(t_stack_node **a, t_stack_node **b)
 	ft_push(a, b);
 }
 
-void	pb(t_stack_node **a, t_stack_node **b)
+void	pb(t_stack_node **b, t_stack_node **a)
 {
-	ft_push(a, b);
+	ft_push(b, a);
 }
