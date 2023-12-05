@@ -6,43 +6,69 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 13:36:59 by davgalle          #+#    #+#             */
-/*   Updated: 2023/12/05 12:40:39 by davgalle         ###   ########.fr       */
+/*   Updated: 2023/12/05 20:08:16 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_pushswap(t_stack_node **a, int *len)
+void	ft_pushswapfour(t_stack_node **a, t_stack_node **b)
 {
 	int	first;
 	int second;
 	int	third;
-	int x;
+	int four;
 
 	first = (*a)->content;
 	second = (*a)->next->content;
 	third = (*a)->next->next->content;
-	x = *len;
-	if (*a == NULL || (*a)->next == NULL)
-		return ;
+	four = (*a)->next->next->next->content;
 	while (!ft_checksort(*a))
 	{
-		if (first > second && first > third)
+		if (first < second && second > third && third < four)
+			ra(a);
+		if ((first > second && second < third && third < four) || 
+				(first > second && second > third && third < four) || 
+				(first < second && second < third && third > four))
+			ra(a);
+		if ((first > second && second > third && third > four) ||
+				(first > second && second < third && third > four))
+			sa(a);
+		if ((first < second && second > third && third > four) || 
+				(first < second && second > third && third > four))
 		{
-			if (second < first && second > third)
-			{
-				sa(a);
-				rra(a);
-			}
-			if (second < first && second < third)
-				ra(a);
+			pb(a, b);
+			pb(a, b);
 		}
+	}
+}
+
+void	ft_pushswapthree(t_stack_node **a)
+{
+	int	first;
+	int second;
+	int	third;
+
+	first = (*a)->content;
+	second = (*a)->next->content;
+	third = (*a)->next->next->content;
+	while (!ft_checksort(*a))
+	{
+		if (first > second && first > third && second > third)
+		{
+			sa(a);
+			rra(a);
+		}
+		if (first > second && first > third && second < third)
+			ra(a);
 		if (first > second && first < third)
+			sa(a);
+		if (first < second && first < third)
 		{
-			if (second < first && second < third)
-				sa(a);
+			sa(a);
+			ra(a);
 		}
-		else if (first < second && second > third)
+		else if (first < second && first > third)
 			rra(a);
 	}
 }

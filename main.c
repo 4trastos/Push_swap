@@ -6,7 +6,7 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 18:42:24 by davgalle          #+#    #+#             */
-/*   Updated: 2023/12/04 17:24:29 by davgalle         ###   ########.fr       */
+/*   Updated: 2023/12/05 20:00:41 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,13 @@ void	ft_sort_stack(t_stack_node **a)
 		if (len == 2)
 			sa(a);
 		if (len == 3)
-			ft_pushswap(a, &len);
-		if (ft_stacklen(*a) > 3)
-		{
-			printf("Hay mas de 3 nodos\n");
-//			ft_pushswap_long(a, &b);
-			exit (1);
-		}
+			ft_pushswapthree(a);
+		if (len ==  4)
+			ft_pushswapfour(a, &b);
+		if (len == 5)
+			ft_pushswapfour(a, &b);
+		if (len > 5)
+			printf("Hay más de 5 argumentos \n");
 	}
 	else
 	{

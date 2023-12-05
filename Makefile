@@ -6,7 +6,7 @@
 #    By: davgalle <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/27 17:25:23 by davgalle          #+#    #+#              #
-#    Updated: 2023/12/04 18:33:56 by davgalle         ###   ########.fr        #
+#    Updated: 2023/12/05 19:34:58 by davgalle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,8 @@ SRCS = main.c \
 	   ft_pushswap_long.c \
 	   ft_pushswap.c \
 	   ft_rotate.c \
-	   ft_rotatereverse.c
+	   ft_rotatereverse.c \
+	   ft_push.c
 
 OBJTS = $(SRCS:.c=.o)
 
