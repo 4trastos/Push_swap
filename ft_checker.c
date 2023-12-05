@@ -6,7 +6,7 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 17:37:20 by davgalle          #+#    #+#             */
-/*   Updated: 2023/12/02 17:29:11 by davgalle         ###   ########.fr       */
+/*   Updated: 2023/12/04 20:26:25 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,14 +59,11 @@ int	ft_stacklen(t_stack_node *stack)
 
 int	ft_checksort(t_stack_node *a)
 {
-	t_stack_node	*aux;
-
-	aux = a;
-	while (aux != NULL && aux->next != NULL)
+	while (a->next != NULL)
 	{
-		if (aux->content < aux->next->content)
+		if (a->content > a->next->content)
 			return (0);
-		aux = aux->next;
+		a = a->next;
 	}
 	return (1);
 }

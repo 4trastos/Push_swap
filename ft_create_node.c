@@ -6,7 +6,7 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 16:26:46 by davgalle          #+#    #+#             */
-/*   Updated: 2023/12/02 17:43:42 by davgalle         ###   ########.fr       */
+/*   Updated: 2023/12/04 20:34:58 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,7 @@ void	ft_cleanlist(t_stack_node **a)
 	aux = *a;
 	while (aux)
 	{
-//      printf("nodo a borrar: %i\n", aux->content);
 		*a = aux->next;
-//		printf("Valor a borrar: %i\n", aux->content);
 		free (aux);
 		aux = *a;
 	}
@@ -62,23 +60,26 @@ int	ft_repeat_content(t_stack_node **a, int content)
 
 void	ft_stack_node(t_stack_node **a, t_stack_node *new)
 {
+	t_stack_node	*aux;
+
+	aux = *a;
 	if (*a == NULL)
 	{
 		*a = new;
 		new->next = NULL;
+		new->prev = NULL;
 		return ;
 	}
 	if (ft_repeat_content(a, new->content))
 	{
 		ft_cleanlist(a);
-//		printf("Contenido duplicado y borrado: %i\n", new->content);
 		free (new);
-//		printf("Nodo duplicado sin apilar NO liberada memoria: %i\n", new->content);
-//		printf("Nodo duplicado sin apilar liberada memoria: Si\n");
 		exit(1);
 	}
-	new->next = *a;
-	*a = new;
+	while (aux->next)
+		aux = aux->next;
+	aux->next = new;
+	new->prev = aux; 
 }
 
 t_stack_node	*ft_create_node(int content)
@@ -91,6 +92,5 @@ t_stack_node	*ft_create_node(int content)
 	new->content = content;
 	new->next = NULL;
 	new->prev = NULL;
-//	printf("Contenido de un nuevo Nodo: %i\n", new->content);
 	return (new);
 }

@@ -6,39 +6,37 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 18:42:24 by davgalle          #+#    #+#             */
-/*   Updated: 2023/12/02 19:41:24 by davgalle         ###   ########.fr       */
+/*   Updated: 2023/12/04 17:24:29 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void print_stack(t_stack_node *a)
+void print_stack(const t_stack_node *a)
 {
-    while (a != NULL)
+    const t_stack_node *aux;
+
+	aux	= a;
+    while (aux != NULL)
     {
-        printf("%d\n", a->content);
-        a = a->next;
+        printf("%d\n", aux->content);
+        aux = aux->next;
     }
 }
 
 void	ft_sort_stack(t_stack_node **a)
 {
 	t_stack_node	*b;
+	int				len;
 
 	b = NULL;
+	len = ft_stacklen(*a);
 	if (!ft_checksort(*a))
 	{
-		if (ft_stacklen(*a) == 2)
-		{
-			printf("Hay 2 Nodos\n");
+		if (len == 2)
 			sa(a);
-		}
-		if (ft_stacklen(*a) == 3)
-		{
-			printf("Tiene 3 nodos\n");
-//			ft_pushswap(a);
-			exit (1);
-		}
+		if (len == 3)
+			ft_pushswap(a, &len);
 		if (ft_stacklen(*a) > 3)
 		{
 			printf("Hay mas de 3 nodos\n");

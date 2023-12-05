@@ -6,7 +6,7 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 16:34:28 by davgalle          #+#    #+#             */
-/*   Updated: 2023/12/02 19:07:59 by davgalle         ###   ########.fr       */
+/*   Updated: 2023/12/04 18:23:52 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,11 @@ void	ft_freelist(t_stack_node **a);
 
 //*** sort stack ***
 
+void		ft_pushswap(t_stack_node **a, int *len);
 void		ft_sort_stack(t_stack_node **a);
 
 //*** movement swap ***
 
-//int	ft_pushswap(t_stack_node **a);
-void	ft_swap_content(t_stack_node *node1, t_stack_node *node2);
 void	ft_swap(t_stack_node **a);
 void	sa(t_stack_node **a);
 void	sb(t_stack_node **b);
@@ -74,10 +73,10 @@ void	sb(t_stack_node **b);
 
 //*** movement rotate ***
 
-
-
-
-
+void	ft_rotate(t_stack_node **a);
+void	ra(t_stack_node **a);
+void	rb(t_stack_node **b);
+void	rra(t_stack_node **a);
 
 //*** movement reverse ***
 
