@@ -6,7 +6,7 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 18:47:27 by davgalle          #+#    #+#             */
-/*   Updated: 2023/12/09 20:59:16 by davgalle         ###   ########.fr       */
+/*   Updated: 2023/12/09 21:26:02 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,15 +66,16 @@ int	main(int argc, char **argv)
 
 	stack_node	*a;
 	stack_node	*b;
-	int			i;
 
 	a = NULL;
 	b = NULL;
-	i = 1;
-	if (argc <= 1 || (argc == 2 && argv[1][0]))
+	if (argc <= 1 || (argc == 2 && !argv[1][0]))
 		return (1);
 	else if (argc == 2)
-		argv = ft_split(argv[i], ' ');
+	{
+		printf("Entra a hacer Split\n");
+		argv = ft_split(argv[1], ' ');
+	}
 	ft_create_stack(&a, argv + 1, argc == 2);
 //	ft_stack_node(&a, ft_create_node(content));
 //	ft_sort_stack(&a);
