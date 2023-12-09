@@ -6,13 +6,13 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 19:57:43 by davgalle          #+#    #+#             */
-/*   Updated: 2023/12/02 18:29:14 by davgalle         ###   ########.fr       */
+/*   Updated: 2023/12/09 20:32:25 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_count(char *str, int i, int *status)
+static int	ft_count(char *str, int i, int *status)
 {
 	int			num;
 	long long	result;

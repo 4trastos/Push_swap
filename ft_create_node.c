@@ -5,16 +5,27 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/28 16:26:46 by davgalle          #+#    #+#             */
-/*   Updated: 2023/12/04 20:34:58 by davgalle         ###   ########.fr       */
+/*   Created: 2023/12/09 15:10:50 by davgalle          #+#    #+#             */
+/*   Updated: 2023/12/09 20:42:41 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_freelist(t_stack_node **a)
+int	ft_checksort(stack_node *a)
 {
-	t_stack_node	*aux;
+	while (a->next != NULL)
+	{
+		if (a->content > a->next->content)
+			return (0);
+		a = a->next;
+	}
+	return (1);
+}
+
+void	ft_freelist(stack_node **a)
+{
+	stack_node	*aux;
 
 	aux = *a;
 	while (aux)
@@ -26,9 +37,9 @@ void	ft_freelist(t_stack_node **a)
 	*a = NULL;
 }
 
-void	ft_cleanlist(t_stack_node **a)
+void	ft_cleanlist(stack_node **a)
 {
-	t_stack_node	*aux;
+	stack_node	*aux;
 
 	aux = *a;
 	while (aux)
@@ -42,25 +53,9 @@ void	ft_cleanlist(t_stack_node **a)
 	write(1, "\n", 1);
 }
 
-int	ft_repeat_content(t_stack_node **a, int content)
+void	ft_stack_node(stack_node **a, stack_node *new)
 {
-	t_stack_node	*aux;
-
-	aux = *a;
-	if (aux->content == content)
-		return (1);
-	while (aux->next != NULL)
-	{
-		if (aux->next->content == content)
-			return (1);
-		aux = aux->next;
-	}
-	return (0);
-}
-
-void	ft_stack_node(t_stack_node **a, t_stack_node *new)
-{
-	t_stack_node	*aux;
+	stack_node	*aux;
 
 	aux = *a;
 	if (*a == NULL)
@@ -70,23 +65,22 @@ void	ft_stack_node(t_stack_node **a, t_stack_node *new)
 		new->prev = NULL;
 		return ;
 	}
-	if (ft_repeat_content(a, new->content))
+/*	if (ft_repeat_content(a, new->content))
 	{
 		ft_cleanlist(a);
 		free (new);
-		exit(1);
-	}
+	}*/
 	while (aux->next)
 		aux = aux->next;
 	aux->next = new;
-	new->prev = aux; 
+	new->prev = aux;
 }
 
-t_stack_node	*ft_create_node(int content)
+stack_node	*ft_create_node(int content)
 {
-	t_stack_node	*new;
+	stack_node	*new;
 
-	new = (t_stack_node *)malloc(sizeof(t_stack_node));
+	new = (stack_node *)malloc(sizeof(stack_node));
 	if (!new)
 		return (NULL);
 	new->content = content;

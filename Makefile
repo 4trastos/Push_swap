@@ -6,7 +6,7 @@
 #    By: davgalle <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/27 17:25:23 by davgalle          #+#    #+#              #
-#    Updated: 2023/12/05 19:34:58 by davgalle         ###   ########.fr        #
+#    Updated: 2023/12/09 20:14:53 by davgalle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,23 +14,19 @@ NAME = push_swap
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g3
+CFLAGS = -Wall -Wextra -Werror -g -O2 #-fsanitize=address -g3
 
 RM = rm -f
 
 LIB = ar rcs
 
 SRCS = main.c \
-	   ft_splitdav.c \
+	   ft_pushswap_unit.c \
 	   ft_checker.c \
-	   ft_free_strings.c \
+	   ft_errors.c \
 	   ft_atoi_dav.c \
-	   ft_create_node.c \
-	   ft_pushswap_long.c \
-	   ft_pushswap.c \
-	   ft_rotate.c \
-	   ft_rotatereverse.c \
-	   ft_push.c
+	   ft_splitdav.c \
+	   ft_create_node.c
 
 OBJTS = $(SRCS:.c=.o)
 

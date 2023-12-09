@@ -5,87 +5,81 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/25 18:42:24 by davgalle          #+#    #+#             */
-/*   Updated: 2023/12/05 20:00:41 by davgalle         ###   ########.fr       */
+/*   Created: 2023/12/06 18:47:27 by davgalle          #+#    #+#             */
+/*   Updated: 2023/12/09 20:59:16 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void print_stack(const t_stack_node *a)
+void print_stack(const stack_node *a)
 {
-    const t_stack_node *aux;
+    const stack_node *aux;
 
 	aux	= a;
     while (aux != NULL)
     {
-        printf("%d\n", aux->content);
+        printf("stack a: %d\n", aux->content);
         aux = aux->next;
     }
 }
 
-void	ft_sort_stack(t_stack_node **a)
+void	ft_leaks(void)
 {
-	t_stack_node	*b;
-	int				len;
-
-	b = NULL;
-	len = ft_stacklen(*a);
-	if (!ft_checksort(*a))
-	{
-		if (len == 2)
-			sa(a);
-		if (len == 3)
-			ft_pushswapthree(a);
-		if (len ==  4)
-			ft_pushswapfour(a, &b);
-		if (len == 5)
-			ft_pushswapfour(a, &b);
-		if (len > 5)
-			printf("Hay más de 5 argumentos \n");
-	}
-	else
-	{
-		printf("Están ordenados \n");
-		exit (1);
-	}
+	system("leaks -q push_swap");
 }
 
-int	main(int argc, char *argv[])
+void	ft_sort_stack(stack_node **a)
 {
-	t_stack_node	*a;
-	int				i;
-	int				j;
-	int				content;
-	char			**str;
-	int				status;
+	(void)*a;
+	printf("Listo para ordenar\n");
+	return ;
+}
+
+void	ft_create_stack(stack_node **a, char **argv, bool check_argc)
+{
+	int	content;
+	int	i;
+	int	status;
+
+	i = 0;
+	status = 0;
+	while (argv[i])
+	{
+		if (ft_checkarg(argv[i]))
+			ft_error(a, argv, check_argc);
+		content = ft_atoi_dav(argv[i], &status);
+		if (status == 1)
+			ft_error(a, argv, check_argc);
+		ft_stack_node(a, ft_create_node(content));
+		if (ft_repeat_content(*a, content))
+			ft_error(a, argv, check_argc);
+		i++;
+	}
+	if (check_argc)
+		ft_free_argv(argv);
+}
+
+int	main(int argc, char **argv)
+{
+	atexit(ft_leaks);
+
+	stack_node	*a;
+	stack_node	*b;
+	int			i;
 
 	a = NULL;
-	status = 0;
+	b = NULL;
 	i = 1;
-	if (argc <= 1)
-		exit (1);
-	if (argc > 1)
-	{
-		while (i < argc)
-		{
-			str = ft_split(argv[i], ' ');
-			j = 0;
-			while (str[j] != NULL)
-			{
-				if (ft_check_arguments(str[j]))
-					ft_free_string(str);
-				content = ft_atoi_dav(str[j], &status);
-				if (status == 1)
-					ft_free_string(str);
-				ft_stack_node(&a, ft_create_node(content));
-				j++;
-			}
-			i++;
-		}
-		ft_sort_stack(&a);
-		printf("Contenido del stack después de la ordenación:\n");
-        print_stack(a);
-	}
-	ft_freelist(&a);
+	if (argc <= 1 || (argc == 2 && argv[1][0]))
+		return (1);
+	else if (argc == 2)
+		argv = ft_split(argv[i], ' ');
+	ft_create_stack(&a, argv + 1, argc == 2);
+//	ft_stack_node(&a, ft_create_node(content));
+//	ft_sort_stack(&a);
+	print_stack(a);
+	ft_free_stack(&a);
+	printf("El programa a terminado");
+	return (0);
 }
