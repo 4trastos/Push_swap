@@ -6,7 +6,7 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 14:25:02 by davgalle          #+#    #+#             */
-/*   Updated: 2023/12/09 20:51:28 by davgalle         ###   ########.fr       */
+/*   Updated: 2023/12/10 12:02:52 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	ft_checkarg(const char *s)
 {
-	int i;
-	int neg;
+	int	i;
+	int	neg;
 
 	i = 0;
 	neg = 0;
@@ -40,7 +40,7 @@ int	ft_checkarg(const char *s)
 	return (0);
 }
 
-int	ft_repeat_content(stack_node *a, int content)
+int	ft_repeat_content(t_stack_node *a, int content)
 {
 	if (a == NULL)
 		return (0);
@@ -50,5 +50,33 @@ int	ft_repeat_content(stack_node *a, int content)
 			return (1);
 		a = a->next;
 	}
+	return (0);
+}
+
+int	ft_check_sort(t_stack_node *a)
+{
+	while (a->next != NULL)
+	{
+		if (a->content > a->next->content)
+			return (0);
+		a = a->next;
+	}
+	return (1);
+}
+
+int	ft_stacklen(t_stack_node *a)
+{
+	int					i;
+	t_stack_node		*aux;
+
+	i = 1;
+	aux = a;
+	while (aux->next != NULL)
+	{
+		aux = aux->next;
+		i++;
+	}
+	if (i > 1)
+		return (i);
 	return (0);
 }

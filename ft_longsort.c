@@ -1,42 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_rotate.c                                        :+:      :+:    :+:   */
+/*   ft_long_sort.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/09 22:11:05 by davgalle          #+#    #+#             */
-/*   Updated: 2023/12/10 12:21:39 by davgalle         ###   ########.fr       */
+/*   Created: 2023/12/10 11:50:36 by davgalle          #+#    #+#             */
+/*   Updated: 2023/12/10 12:43:59 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_rotate(t_stack_node **a)
+void	ft_long_sort(t_stack_node **a, t_stack_node **b)
 {
-	t_stack_node	*first;
-	t_stack_node	*last;
+	t_stack_node *clone;
 
-	if (*a != NULL && (*a)->next != NULL)
-	{
-		first = *a;
-		*a = first->next;
-		last = first;
-		while (last->next != NULL)
-		{
-			last = last->next;
-		}
-		last->next = first;
-		first->next = NULL;
-	}
-}
-
-void	ra(t_stack_node **a)
-{
-	ft_rotate(a);
-}
-
-void	rb(t_stack_node **b)
-{
-	ft_rotate(b);
+	clone = *b;
+	if (!ft_checksort(*a))
+		printf("Mas de 5");
+	return ;
 }

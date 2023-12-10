@@ -6,7 +6,7 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 14:29:24 by davgalle          #+#    #+#             */
-/*   Updated: 2023/12/09 20:10:51 by davgalle         ###   ########.fr       */
+/*   Updated: 2023/12/10 12:04:56 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	ft_free_argv(char **argv)
 	free(argv - 1);
 }
 
-void	ft_error(stack_node **a, char **argv, bool check_argc)
+void	ft_error(t_stack_node **a, char **argv, bool check_argc)
 {
 	ft_free_stack(a);
 	if (check_argc)
@@ -51,10 +51,10 @@ void	ft_error(stack_node **a, char **argv, bool check_argc)
 	exit(1);
 }
 
-void	ft_free_stack(stack_node **a)
+void	ft_free_stack(t_stack_node **a)
 {
-	stack_node	*aux;
-	stack_node	*dupl;
+	t_stack_node	*aux;
+	t_stack_node	*dupl;
 
 	if (a == NULL)
 		return ;

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/02 13:36:59 by davgalle          #+#    #+#             */
-/*   Updated: 2023/12/05 20:08:16 by davgalle         ###   ########.fr       */
+/*   Created: 2023/12/09 21:53:01 by davgalle          #+#    #+#             */
+/*   Updated: 2023/12/10 12:43:12 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,30 +15,30 @@
 void	ft_pushswapfour(t_stack_node **a, t_stack_node **b)
 {
 	int	first;
-	int second;
+	int	second;
 	int	third;
-	int four;
+	int	four;
 
-	first = (*a)->content;
-	second = (*a)->next->content;
-	third = (*a)->next->next->content;
-	four = (*a)->next->next->next->content;
 	while (!ft_checksort(*a))
 	{
+		first = (*a)->content;
+		second = (*a)->next->content;
+		third = (*a)->next->next->content;
+		four = (*a)->next->next->next->content;
+		if ((first > second && second < third && third < four)
+			|| (first > second && second < third && third > four)
+			|| (first > second && second > third && third > four))
+			sa(a);
+		if (first < second && second < third && third > four)
+			rra(a);
 		if (first < second && second > third && third < four)
 			ra(a);
-		if ((first > second && second < third && third < four) || 
-				(first > second && second > third && third < four) || 
-				(first < second && second < third && third > four))
-			ra(a);
-		if ((first > second && second > third && third > four) ||
-				(first > second && second < third && third > four))
-			sa(a);
-		if ((first < second && second > third && third > four) || 
-				(first < second && second > third && third > four))
+		else if ((first < second && second > third && third > four)
+			|| (first > second && second > third && third < four))
 		{
-			pb(a, b);
-			pb(a, b);
+			pb(b, a);
+			sa(a);
+			pa(a, b);
 		}
 	}
 }
@@ -46,14 +46,14 @@ void	ft_pushswapfour(t_stack_node **a, t_stack_node **b)
 void	ft_pushswapthree(t_stack_node **a)
 {
 	int	first;
-	int second;
+	int	second;
 	int	third;
 
-	first = (*a)->content;
-	second = (*a)->next->content;
-	third = (*a)->next->next->content;
 	while (!ft_checksort(*a))
 	{
+		first = (*a)->content;
+		second = (*a)->next->content;
+		third = (*a)->next->next->content;
 		if (first > second && first > third && second > third)
 		{
 			sa(a);
@@ -73,24 +73,28 @@ void	ft_pushswapthree(t_stack_node **a)
 	}
 }
 
-void ft_swap(t_stack_node **a)
+void	ft_swap(t_stack_node **a)
 {
-    if (*a != NULL && (*a)->next != NULL)
+	int	temp;
+
+	if (*a != NULL && (*a)->next != NULL)
 	{
-        int temp;
-		
 		temp = (*a)->content;
-        (*a)->content = (*a)->next->content;
-        (*a)->next->content = temp;
-    }
+		(*a)->content = (*a)->next->content;
+		(*a)->next->content = temp;
+	}
 }
 
 void	sa(t_stack_node **a)
 {
 	ft_swap(a);
+/*	if (!check)
+		write(1, "sa\n", 3);*/
 }
 
 void	sb(t_stack_node **b)
 {
 	ft_swap(b);
+/*	if (!check)
+		write(1, "sb\n", 3);*/
 }

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/04 18:31:43 by davgalle          #+#    #+#             */
-/*   Updated: 2023/12/04 20:39:50 by davgalle         ###   ########.fr       */
+/*   Created: 2023/12/09 22:13:55 by davgalle          #+#    #+#             */
+/*   Updated: 2023/12/10 12:40:19 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,24 @@
 
 void	ft_reverse_rotate(t_stack_node **a)
 {
-	int				last_content;
-	t_stack_node	*aux;
+	t_stack_node	*first;
+	t_stack_node	*prev;
+	t_stack_node	*last;
 
-	aux = *a;
-	while (aux->next != NULL)
-		aux = aux->next;
-	last_content = aux->content;
-	while (aux->prev != NULL)
+	first = *a;
+	prev = NULL;
+	last = NULL;
+	if (*a == NULL || (*a)->next == NULL)
+		return ;
+	while (first->next != NULL)
 	{
-		aux->content = aux->prev->content;
-		aux = aux->prev;
+		prev = first;
+		first = first->next;
 	}
-	aux->content = last_content;
+	last = first;
+	last->next = *a;
+	*a = last;
+	prev->next = NULL;
 }
 
 void	rra(t_stack_node **a)
@@ -38,4 +43,3 @@ void	rrb(t_stack_node **b)
 {
 	ft_reverse_rotate(b);
 }
-
