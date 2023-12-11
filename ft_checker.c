@@ -6,7 +6,7 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 14:25:02 by davgalle          #+#    #+#             */
-/*   Updated: 2023/12/10 12:02:52 by davgalle         ###   ########.fr       */
+/*   Updated: 2023/12/11 17:38:06 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,17 @@ int	ft_stacklen(t_stack_node *a)
 	if (i > 1)
 		return (i);
 	return (0);
+}
+
+bool	checksort(t_stack_node *a)
+{
+	if (a == NULL)
+		return (1);
+	while (a->next)
+	{
+		if (a->content > a->next->content)
+			return (false);
+		a = a->next;
+	}
+	return (true);
 }

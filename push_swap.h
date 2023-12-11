@@ -6,7 +6,7 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 16:34:28 by davgalle          #+#    #+#             */
-/*   Updated: 2023/12/10 12:35:00 by davgalle         ###   ########.fr       */
+/*   Updated: 2023/12/11 19:35:36 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,9 @@
 
 typedef struct s_stack_node
 {
-	int					content;
 	int					posittion;
+	int					content;
+	int					size;
 	struct s_stack_node	*next;
 	struct s_stack_node	*prev;
 }	t_stack_node;
@@ -40,7 +41,9 @@ int				ft_atoi_dav(char *str, int *status);
 
 //*** auxiliary functions ***
 
-bool			stack_sorted(t_stack_node *stack);
+bool			checksort(t_stack_node *a);
+void			ft_find_smaller(t_stack_node **stack);
+void			ft_find_bigger(t_stack_node **stack);
 
 //*** create nodes ***
 
@@ -67,6 +70,8 @@ void			ft_long_sort(t_stack_node **a, t_stack_node **b);
 void			ft_pushswapfour(t_stack_node **a, t_stack_node **b);
 void			ft_pushswapthree(t_stack_node **a);
 int				ft_stacklen(t_stack_node *a);
+void			ft_fivenodes(t_stack_node **a, t_stack_node **b);
+void			ft_sixnodes(t_stack_node **a, t_stack_node **b);
 
 //*** movement swap ***
 
