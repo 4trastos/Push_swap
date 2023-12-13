@@ -6,7 +6,7 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 15:10:50 by davgalle          #+#    #+#             */
-/*   Updated: 2023/12/11 20:06:10 by davgalle         ###   ########.fr       */
+/*   Updated: 2023/12/12 14:53:16 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,9 @@ void	ft_cleanlist(t_stack_node **a)
 void	ft_stack_node(t_stack_node **a, t_stack_node *new)
 {
 	t_stack_node	*aux;
-	int				posittion;
+	int				position;
 
-	posittion = 1;
+	position = 1;
 	aux = *a;
 	if (*a == NULL)
 	{
@@ -70,11 +70,11 @@ void	ft_stack_node(t_stack_node **a, t_stack_node *new)
 	while (aux->next)
 	{
 		aux = aux->next;
-		posittion++;
+		position++;
 	}
 	aux->next = new;
 	new->prev = aux;
-	aux->posittion = posittion;
+	aux->position = position;
 }
 
 t_stack_node	*ft_create_node(int content)
@@ -86,7 +86,7 @@ t_stack_node	*ft_create_node(int content)
 		return (NULL);
 	new->content = content;
 	new->size = 0;
-	new->posittion = 0;
+	new->position = 0;
 	new->next = NULL;
 	new->prev = NULL;
 	return (new);

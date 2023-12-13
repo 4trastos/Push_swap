@@ -6,7 +6,7 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 10:02:24 by davgalle          #+#    #+#             */
-/*   Updated: 2023/12/11 19:54:32 by davgalle         ###   ########.fr       */
+/*   Updated: 2023/12/13 14:40:37 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,28 +23,6 @@ int	ft_isdigit(int c)
 		return (0);
 	}
 }
-/*
-int	ft_find_smaller(t_stack_node **stack)
-{
-	int	smaller;
-	int post;
-
-	if (!stack)
-		return (0);
-	post = 0;
-	smaller = (*stack)->content;
-	while (stack)
-	{
-		if (smaller > (*stack)->next->content)
-		{
-			smaller = (*stack)->next->content;
-			post = (*stack)->next - *stack;
-		}
-		*stack = (*stack)->next;
-	}
-	(*stack)->posittion = post;
-	return (post);
-}*/
 
 void	ft_find_smaller(t_stack_node **stack)
 {
@@ -56,7 +34,7 @@ void	ft_find_smaller(t_stack_node **stack)
 		return ;
 	aux = *stack;
 	value = 1;
-	smaller = (*stack)->content;
+	smaller = aux->content;
 	while (aux)
 	{
 		if (smaller > aux->next->content)

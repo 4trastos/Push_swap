@@ -6,7 +6,7 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 16:34:28 by davgalle          #+#    #+#             */
-/*   Updated: 2023/12/11 19:35:36 by davgalle         ###   ########.fr       */
+/*   Updated: 2023/12/12 16:54:49 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 typedef struct s_stack_node
 {
-	int					posittion;
+	int					position;
 	int					content;
 	int					size;
 	struct s_stack_node	*next;

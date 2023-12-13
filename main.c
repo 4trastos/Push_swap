@@ -6,7 +6,7 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 18:47:27 by davgalle          #+#    #+#             */
-/*   Updated: 2023/12/11 19:21:26 by davgalle         ###   ########.fr       */
+/*   Updated: 2023/12/12 18:07:36 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void print_stack(const t_stack_node *a)
 	aux	= a;
     while (aux != NULL)
     {
-        printf("stack a: %d\n", aux->content);
+        printf("%d\n", aux->content);
         aux = aux->next;
     }
 }
