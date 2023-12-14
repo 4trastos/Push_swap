@@ -6,7 +6,7 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 16:34:28 by davgalle          #+#    #+#             */
-/*   Updated: 2023/12/12 16:54:49 by davgalle         ###   ########.fr       */
+/*   Updated: 2023/12/14 20:22:51 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ typedef struct s_stack_node
 
 //*** startup algorithms ***
 
-int				main(int argc, char **argv);
+//int				main(int argc, char **argv);
 void			ft_partone(t_stack_node **a, char **argv, int argc);
 
 //*** create content nodes ***
@@ -42,8 +42,8 @@ int				ft_atoi_dav(char *str, int *status);
 //*** auxiliary functions ***
 
 bool			checksort(t_stack_node *a);
-void			ft_find_smaller(t_stack_node **stack);
-void			ft_find_bigger(t_stack_node **stack);
+int				ft_find_smaller(t_stack_node **stack);
+t_stack_node	*ft_find_bigger(t_stack_node **a);
 
 //*** create nodes ***
 

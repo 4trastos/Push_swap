@@ -6,7 +6,7 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 21:53:01 by davgalle          #+#    #+#             */
-/*   Updated: 2023/12/11 19:21:35 by davgalle         ###   ########.fr       */
+/*   Updated: 2023/12/14 20:13:40 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,19 @@ void	ft_pushswapfour(t_stack_node **a, t_stack_node **b)
 
 void	ft_pushswapthree(t_stack_node **a)
 {
+	t_stack_node	*big;
+
+	big = ft_find_bigger(a);
+	if (*a == big)
+		ra(a);
+	else if ((*a)->next == big)
+		rra(a);
+	if ((*a)->content > (*a)->next->content)
+		sa(a);
+}
+/*
+void	ft_pushswapthree(t_stack_node **a)
+{
 	int	first;
 	int	second;
 	int	third;
@@ -59,11 +72,11 @@ void	ft_pushswapthree(t_stack_node **a)
 			sa(a);
 			rra(a);
 		}
-		if (first > second && first > third && second < third)
+		else if (first > second && first > third && second < third)
 			ra(a);
-		if (first > second && first < third)
+		else if (first > second && first < third)
 			sa(a);
-		if (first < second && first < third)
+		else if (first < second && first < third)
 		{
 			sa(a);
 			ra(a);
@@ -71,7 +84,7 @@ void	ft_pushswapthree(t_stack_node **a)
 		else if (first < second && first > third)
 			rra(a);
 	}
-}
+}*/
 
 void	ft_swap(t_stack_node **a)
 {
