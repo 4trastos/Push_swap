@@ -6,7 +6,7 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 16:34:28 by davgalle          #+#    #+#             */
-/*   Updated: 2023/12/14 20:22:51 by davgalle         ###   ########.fr       */
+/*   Updated: 2023/12/15 22:29:26 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,18 @@ typedef struct s_stack_node
 {
 	int					position;
 	int					content;
-	int					size;
+	int					group;
 	struct s_stack_node	*next;
 	struct s_stack_node	*prev;
+	struct s_stack_node	*target_node;
 }	t_stack_node;
+
+//*** vortex mathematics ***
+
+void			ft_init_groups(t_stack_node *a);
 
 //*** startup algorithms ***
 
-//int				main(int argc, char **argv);
 void			ft_partone(t_stack_node **a, char **argv, int argc);
 
 //*** create content nodes ***
@@ -42,12 +46,13 @@ int				ft_atoi_dav(char *str, int *status);
 //*** auxiliary functions ***
 
 bool			checksort(t_stack_node *a);
-int				ft_find_smaller(t_stack_node **stack);
-t_stack_node	*ft_find_bigger(t_stack_node **a);
+int				ft_find_small(t_stack_node **stack);
+t_stack_node	*ft_find_smaller(t_stack_node **stack);
+t_stack_node	*ft_find_bigger(t_stack_node **stack);
 
 //*** create nodes ***
 
-t_stack_node	*ft_create_node(int content);
+t_stack_node	*ft_create_node(int content, int position);
 void			ft_stack_node(t_stack_node **a, t_stack_node *new);
 
 //*** checker ***
@@ -67,11 +72,10 @@ void			ft_free_stack(t_stack_node **a);
 //*** sort stack ***
 
 void			ft_long_sort(t_stack_node **a, t_stack_node **b);
-void			ft_pushswapfour(t_stack_node **a, t_stack_node **b);
-void			ft_pushswapthree(t_stack_node **a);
+void			ft_stackfour(t_stack_node **a, t_stack_node **b);
+void			ft_stackthree(t_stack_node **a);
 int				ft_stacklen(t_stack_node *a);
 void			ft_fivenodes(t_stack_node **a, t_stack_node **b);
-void			ft_sixnodes(t_stack_node **a, t_stack_node **b);
 
 //*** movement swap ***
 

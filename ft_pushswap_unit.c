@@ -6,7 +6,7 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 10:02:24 by davgalle          #+#    #+#             */
-/*   Updated: 2023/12/14 20:22:37 by davgalle         ###   ########.fr       */
+/*   Updated: 2023/12/15 16:16:31 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,28 @@ int	ft_isdigit(int c)
 	}
 }
 
-int	ft_find_smaller(t_stack_node **stack)
+t_stack_node	*ft_find_smaller(t_stack_node **stack)
+{
+	t_stack_node	*smaller;
+	t_stack_node	*aux;
+	int				i;
+
+	i = INT_MAX;
+	aux = *stack;
+	smaller = *stack;
+	while (aux)
+	{
+		if (aux->content < i)
+		{
+			i = aux->content;
+			smaller = aux;
+		}
+		aux = aux->next;
+	}
+	return (smaller);
+}
+
+int	ft_find_small(t_stack_node **stack)
 {
 	t_stack_node	*aux;
 	int	smaller;
@@ -47,24 +68,24 @@ int	ft_find_smaller(t_stack_node **stack)
 	return (position);
 }
 
-t_stack_node	*ft_find_bigger(t_stack_node **a)
+t_stack_node	*ft_find_bigger(t_stack_node **stack)
 {
 	int				i;
-	t_stack_node	*big_node;
+	t_stack_node	*biggest;
 	t_stack_node	*aux;
 
-	aux = *a;
-	big_node = *a;
+	aux = *stack;
+	biggest = *stack;
 	i = INT_MIN;
 	while (aux)
 	{
 		if (aux->content > i)
 		{
 			i = aux->content;
-			big_node = aux;
+			biggest = aux;
 		}
 		aux = aux->next;
 	}
-	return (big_node);
+	return (biggest);
 }
 

@@ -6,85 +6,49 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 21:53:01 by davgalle          #+#    #+#             */
-/*   Updated: 2023/12/14 20:13:40 by davgalle         ###   ########.fr       */
+/*   Updated: 2023/12/15 22:38:15 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_pushswapfour(t_stack_node **a, t_stack_node **b)
+void	ft_stackfour(t_stack_node **a, t_stack_node **b)
 {
-	int	first;
-	int	second;
-	int	third;
-	int	four;
+	t_stack_node	*smaller;
 
 	while (!ft_checksort(*a))
 	{
-		first = (*a)->content;
-		second = (*a)->next->content;
-		third = (*a)->next->next->content;
-		four = (*a)->next->next->next->content;
-		if ((first > second && second < third && third < four)
-			|| (first > second && second < third && third > four)
-			|| (first > second && second > third && third > four))
-			sa(a);
-		if (first < second && second < third && third > four)
-			rra(a);
-		if (first < second && second > third && third < four)
-			ra(a);
-		else if ((first < second && second > third && third > four)
-			|| (first > second && second > third && third < four))
-		{
+		smaller = ft_find_smaller(a);
+		if (*a == smaller)
 			pb(b, a);
-			sa(a);
-			pa(a, b);
+		else if ((*a)->next == smaller)
+		{
+			ra(a);
+			pb(b, a);
 		}
+		if ((*a)->next->next == smaller)
+		{
+			while (*a != smaller)
+				rra(a);
+		}
+		ft_stackthree(a);
 	}
+	while (*b)
+		pa(a, b);
 }
 
-void	ft_pushswapthree(t_stack_node **a)
+void	ft_stackthree(t_stack_node **a)
 {
-	t_stack_node	*big;
+	t_stack_node	*biggest;
 
-	big = ft_find_bigger(a);
-	if (*a == big)
+	biggest = ft_find_bigger(a);
+	if (*a == biggest)
 		ra(a);
-	else if ((*a)->next == big)
+	else if ((*a)->next == biggest)
 		rra(a);
 	if ((*a)->content > (*a)->next->content)
 		sa(a);
 }
-/*
-void	ft_pushswapthree(t_stack_node **a)
-{
-	int	first;
-	int	second;
-	int	third;
-
-	while (!ft_checksort(*a))
-	{
-		first = (*a)->content;
-		second = (*a)->next->content;
-		third = (*a)->next->next->content;
-		if (first > second && first > third && second > third)
-		{
-			sa(a);
-			rra(a);
-		}
-		else if (first > second && first > third && second < third)
-			ra(a);
-		else if (first > second && first < third)
-			sa(a);
-		else if (first < second && first < third)
-		{
-			sa(a);
-			ra(a);
-		}
-		else if (first < second && first > third)
-			rra(a);
-	}
-}*/
 
 void	ft_swap(t_stack_node **a)
 {

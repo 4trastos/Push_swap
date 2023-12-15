@@ -6,7 +6,7 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 18:47:27 by davgalle          #+#    #+#             */
-/*   Updated: 2023/12/14 16:48:55 by davgalle         ###   ########.fr       */
+/*   Updated: 2023/12/15 22:45:25 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,20 @@ void	ft_leaks(void)
 	system("leaks -q push_swap");
 }
 
+void ft_init_groups(t_stack_node *a)
+{
+  if (a == NULL)
+    return;
+
+  if (a->content % 3 == 0)
+    a->group = 3;
+  else if (a->content % 6 == 0)
+    a->group = 6;
+  else
+    a->group = 9;
+  ft_init_groups(a->next);
+}
+
 void	ft_create_stack(t_stack_node **a, char **argv, bool check_argc)
 {
 	int	content;
@@ -44,13 +58,14 @@ void	ft_create_stack(t_stack_node **a, char **argv, bool check_argc)
 		content = ft_atoi_dav(argv[i], &status);
 		if (status == 1)
 			ft_error(a, argv, check_argc);
-		ft_stack_node(a, ft_create_node(content));
+		ft_stack_node(a, ft_create_node(content, i));
 		if (ft_repeat_content(*a, content))
 			ft_error(a, argv, check_argc);
 		i++;
 	}
 	if (check_argc)
 		ft_free_argv(argv);
+	ft_init_groups(*a);
 }
 
 int	main(int argc, char **argv)
@@ -71,9 +86,9 @@ int	main(int argc, char **argv)
 		if (ft_stacklen(a) == 2)
 			sa(&a);
 		if (ft_stacklen(a) == 3)
-			ft_pushswapthree(&a);
+			ft_stackthree(&a);
 		if (ft_stacklen(a) == 4)
-			ft_pushswapfour(&a, &b);
+			ft_stackfour(&a, &b);
 		else
 			ft_long_sort(&a, &b);
 	}
