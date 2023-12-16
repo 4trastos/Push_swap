@@ -6,11 +6,24 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 10:02:24 by davgalle          #+#    #+#             */
-/*   Updated: 2023/12/15 16:16:31 by davgalle         ###   ########.fr       */
+/*   Updated: 2023/12/16 16:12:33 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+t_stack_node	*ft_return_faster(t_stack_node *stack) // Busca el más rápipdo
+{
+	if (!stack)
+		return (NULL);
+	while (stack)
+	{
+		if (stack->faster)
+			return (stack);
+		stack = stack->next;
+	}
+	return (NULL);
+}
 
 int	ft_isdigit(int c)
 {

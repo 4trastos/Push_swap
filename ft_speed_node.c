@@ -6,58 +6,58 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 22:30:01 by davgalle          #+#    #+#             */
-/*   Updated: 2023/12/15 22:34:51 by davgalle         ###   ########.fr       */
+/*   Updated: 2023/12/16 22:39:44 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	set_current_position(t_stack_node *stack)
+void	ft_center_position(t_stack_node *stack)  //set_current_position *****
 {
 	int	i;
-	int	centerline;
+	int	center;
 
 	i = 0;
-	if (NULL == stack)
+	if (!stack)
 		return ;
-	centerline = stack_len(stack) / 2;
+	center = ft_stacklen(stack) / 2;
 	while (stack)
 	{
-		stack->current_position = i;
-		if (i <= centerline)
-			stack->above_median = true;
+		stack->position = i;
+		if (i <= center)
+			stack->near_center = true;   //about_median *****
 		else
-			stack->above_median = false;
+			stack->near_center = false;
 		stack = stack->next;
 		++i;
 	}
 }
 
-static void	set_target_node(t_stack_node *a, t_stack_node *b)
+void	ft_target_node(t_stack_node *a, t_stack_node *b)
 {
-	t_stack_node	*current_a;
+	t_stack_node	*aux;
 	t_stack_node	*target_node;
 	long			best_match_index;
 
 	while (b)
 	{
 		best_match_index = LONG_MAX;
-		current_a = a;
-		while (current_a)
+		aux = a;
+		while (aux)
 		{
-			if (current_a->value > b->value
-				&& current_a->value < best_match_index)
+			if (aux->content > b->content
+				&& aux->content < best_match_index)
 			{
-				best_match_index = current_a->value;
-				target_node = current_a;
+				best_match_index = aux->content;
+				target_node = aux;
 			}
-			current_a = current_a->next;
+			aux = aux->next;
 		}
-		if (LONG_MAX == best_match_index)
-			b->target_node = find_smallest(a);
+		if (best_match_index == LONG_MAX)
+			b->target_node = ft_find_smaller(&a);
 		else
 		{
-			if (b->value % 3 == 0)
+			if (b->content % 3 == 0)
 				continue;
 			b->target_node = target_node;
 		}
@@ -65,56 +65,52 @@ static void	set_target_node(t_stack_node *a, t_stack_node *b)
 	}
 }
 
-void	set_price(t_stack_node *a, t_stack_node *b)
+void	ft_speed(t_stack_node *a, t_stack_node *b)
 {
 	int	len_a;
 	int	len_b;
 
-	len_a = stack_len(a);
-	len_b = stack_len(b);
+	len_a = ft_stacklen(a);
+	len_b = ft_stacklen(b);
 	while (b)
 	{
-		b->push_price = b->current_position;
-		if (!(b->above_median))
-			b->push_price = len_b - (b->current_position);
-		if (b->target_node->above_median)
-			b->push_price += b->target_node->current_position;
+		b->speed = b->position;
+		if (!(b->near_center))
+			b->speed = len_b - (b->position);
+		if (b->target_node->near_center)
+			b->speed += b->target_node->position;
 		else
-			b->push_price += len_a - (b->target_node->current_position);
+			b->speed += len_a - (b->target_node->position);
 		b = b->next;
 	}
 }
 
-void	set_cheapest(t_stack_node *b)
+void	ft_faster(t_stack_node *b)
 {
-	long			best_match_value;
+	long			best_match_speed;
 	t_stack_node	*best_match_node;
 
-	if (NULL == b)
+	if (!b)
 		return ;
-	best_match_value = LONG_MAX;
+	best_match_speed = LONG_MAX;
 	while (b)
 	{
-		if (b->push_price < best_match_value)
+		if (b->speed < best_match_speed)
 		{
-			best_match_value = b->push_price;
+			best_match_speed = b->speed;
 			best_match_node = b;
 		}
 		b = b->next;
 	}
-	best_match_node->cheapest = (best_match_node->group == 0 && best_match_node->residual == 0)
-		|| (best_match_node->group == 1 && best_match_node->residual == 0)
-		|| (best_match_node->group == 2 && best_match_node->residual == 0)
-		|| (best_match_node->group == 0 && best_match_node->residual == 1)
-		|| (best_match_node->group == 1 && best_match_node->residual == 2)
-		|| (best_match_node->group == 2 && best_match_node->residual == 3);
+	best_match_node->faster = true;
 }
+
 
 void	ft_speed_nodes(t_stack_node *a, t_stack_node *b)
 {
-	set_current_position(a);
-	set_current_position(b);
-	set_target_node(a, b);
-	set_price(a, b);
-	set_cheapest(b);
+	ft_center_position(a); //Busca el Nodo más cercano al centro del stack; 
+	ft_center_position(b); //Busca el Nodo más cercano al cenrto del stack;
+	ft_target_node(a, b);  //Busca el Nodo objetivo hacia el que tiene que apuntar;
+	ft_speed(a, b);       // busca l optimización de movimientos;
+	ft_faster(b);        // Marca el Nodo más rápido;
 }

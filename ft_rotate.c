@@ -6,7 +6,7 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 22:11:05 by davgalle          #+#    #+#             */
-/*   Updated: 2023/12/10 12:21:39 by davgalle         ###   ########.fr       */
+/*   Updated: 2023/12/16 17:40:18 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,11 @@ void	ra(t_stack_node **a)
 
 void	rb(t_stack_node **b)
 {
+	ft_rotate(b);
+}
+
+void	rr(t_stack_node **a, t_stack_node **b)
+{
+	ft_rotate(a);
 	ft_rotate(b);
 }

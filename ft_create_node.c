@@ -6,7 +6,7 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 15:10:50 by davgalle          #+#    #+#             */
-/*   Updated: 2023/12/15 12:57:40 by davgalle         ###   ########.fr       */
+/*   Updated: 2023/12/16 12:10:26 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ t_stack_node	*ft_create_node(int content, int position)
 	if (!new)
 		return (NULL);
 	new->content = content;
-	new->size = 0;
 	new->position = position;
 	new->next = NULL;
 	new->prev = NULL;

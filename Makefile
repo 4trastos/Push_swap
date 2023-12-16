@@ -6,7 +6,7 @@
 #    By: davgalle <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/27 17:25:23 by davgalle          #+#    #+#              #
-#    Updated: 2023/12/15 22:31:21 by davgalle         ###   ########.fr        #
+#    Updated: 2023/12/16 20:21:11 by davgalle         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,8 @@ SRCS = main.c \
 	   ft_rotatereverse.c \
 	   ft_push.c \
 	   ft_longsort.c \
-	   ft_speed_node.c
+	   ft_speed_node.c \
+	   ft_mass_ordering.c
 
 OBJTS = $(SRCS:.c=.o)
 

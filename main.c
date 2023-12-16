@@ -6,7 +6,7 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 18:47:27 by davgalle          #+#    #+#             */
-/*   Updated: 2023/12/15 22:45:25 by davgalle         ###   ########.fr       */
+/*   Updated: 2023/12/16 19:43:10 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void ft_init_groups(t_stack_node *a)
     a->group = 6;
   else
     a->group = 9;
-  ft_init_groups(a->next);
+ // ft_init_groups(a->next);
 }
 
 void	ft_create_stack(t_stack_node **a, char **argv, bool check_argc)
@@ -76,7 +76,7 @@ int	main(int argc, char **argv)
 
 	a = NULL;
 	b = NULL;
-	if (argc <= 1 || (argc == 2 && !argv[1][0]))
+	if (argc == 1 || (argc == 2 && !argv[1][0]))
 		return (1);
 	else if (argc == 2)
 		argv = ft_split(argv[1], ' ');

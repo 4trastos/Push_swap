@@ -6,98 +6,83 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 14:13:10 by davgalle          #+#    #+#             */
-/*   Updated: 2023/12/09 21:18:03 by davgalle         ###   ########.fr       */
+/*   Updated: 2023/12/16 20:27:52 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static char	**ft_empty_split(void)
+static char	*ft_words_complete(char *str, char c)
 {
-	char	**aux;
+	static int	cursor = 0;
+	char		*next_str;
+	int			len;
+	int			i;
 
-	aux = (char **)malloc(sizeof(char *));
-	if (!aux)
-		return (NULL);
-	aux[0] = NULL;
-	return (aux);
-}
-
-static char	**ft_free_str(char **str)
-{
-	int	i;
-
+	len = 0;
 	i = 0;
-	while (str[i])
-	{
-		free(str[i]);
-		i++;
-	}
-	free(str);
-	return (NULL);
+	while (str[cursor] == c)
+		++cursor;
+	while ((str[cursor + len] != c) && str[cursor + len])
+		++len;
+	next_str = malloc((size_t)len * sizeof(char) + 1);
+	if (! next_str)
+		return (NULL);
+	while ((str[cursor] != c) && str[cursor])
+		next_str[i++] = str[cursor++];
+	next_str[i] = '\0';
+	return (next_str);
 }
 
-static char	*ft_words_complete(const char *str, int number)
+static int	ft_words(char *str, char c)
+{
+	int		count;
+	bool	inside_word;
+
+	count = 0;
+	while (*str)
+	{
+		inside_word = false;
+		while (*str == c && *str)
+			++str;
+		while (*str != c && *str)
+		{
+			if (!inside_word)
+			{
+				++count;
+				inside_word = true;
+			}
+			++str;
+		}
+	}
+	return (count);
+}
+
+char	**ft_split(char *str, char c)
 {
 	int		i;
-	char	*line;
-
-	i = 0;
-	line = (char *)malloc(number + 1);
-	if (!line)
-		return (NULL);
-	while (i < number)
-	{
-		line[i] = str[i];
-		i++;
-	}
-	line[i] = '\0';
-	return (line);
-}
-
-static int	ft_words(char const *str, char c)
-{
-	int	i;
-	int	z;
-
-	i = 0;
-	z = 0;
-	while (str[i] != '\0')
-	{
-		if (str[i] == c)
-			i++;
-		if (str[i] == '\0')
-			return (z);
-		if (str[i] != c && (str[i + 1] == c || str[i + 1] == '\0'))
-			z++;
-		i++;
-	}
-	return (z);
-}
-
-char	**ft_split(const char *str, char c)
-{
-	int		i;
-	int		z;
-	int		len_words;
 	char	**new;
+	int		words;
 
-	if (!str || *str == 0)
-		return (ft_empty_split());
-	new = (char **)malloc(sizeof(char *) * (ft_words(str, c) + 1));
+	words = ft_words(str, c);
+	if (!words)
+		exit(1);
+	new = (char **)malloc(sizeof(char *) * (size_t)(words + 2));
+	if (!new)
+		return (NULL);
 	i = 0;
-	z = 0;
-	while (str[i] != '\0' && z < ft_words(str, c))
+	while (words-- >= 0)
 	{
-		while (str[i] == c)
-			i++;
-		len_words = i;
-		while (str[i] != c && str[i] != '\0')
-			i++;
-		new[z] = ft_words_complete(&str[len_words], i - len_words);
-		if (new[z++] == NULL)
-			return (ft_free_str(new));
+		if (i == 0)
+		{
+			new[i] = malloc(sizeof(char));
+			if (!new[i])
+				return (NULL);
+			new[i++][0] = '\0';
+			continue ;
+		}
+		new[i++] = ft_words_complete(str, c);
 	}
-	new[z] = NULL;
+	new[i] = NULL;
 	return (new);
 }

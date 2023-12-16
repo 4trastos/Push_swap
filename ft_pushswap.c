@@ -6,7 +6,7 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 21:53:01 by davgalle          #+#    #+#             */
-/*   Updated: 2023/12/15 22:38:15 by davgalle         ###   ########.fr       */
+/*   Updated: 2023/12/16 23:15:50 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,13 @@ void	ft_stackfour(t_stack_node **a, t_stack_node **b)
 		smaller = ft_find_smaller(a);
 		if (*a == smaller)
 			pb(b, a);
-		else if ((*a)->next == smaller)
+		if ((*a)->next == smaller)
 		{
 			ra(a);
 			pb(b, a);
 		}
-		if ((*a)->next->next == smaller)
+		else if ((*a)->next->next == smaller
+			|| (*a)->next->next->next == smaller)
 		{
 			while (*a != smaller)
 				rra(a);
