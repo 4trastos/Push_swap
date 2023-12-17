@@ -6,7 +6,7 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 15:10:50 by davgalle          #+#    #+#             */
-/*   Updated: 2023/12/16 12:10:26 by davgalle         ###   ########.fr       */
+/*   Updated: 2023/12/17 17:24:26 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,8 @@ void	ft_stack_node(t_stack_node **a, t_stack_node *new)
 	while (aux->next != NULL)
 		aux = aux->next;
 	new->prev = aux;
-    aux->next = new;
-    new->next = NULL;
+	aux->next = new;
+	new->next = NULL;
 }
 
 t_stack_node	*ft_create_node(int content, int position)

@@ -6,13 +6,13 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 22:30:01 by davgalle          #+#    #+#             */
-/*   Updated: 2023/12/16 22:39:44 by davgalle         ###   ########.fr       */
+/*   Updated: 2023/12/17 18:34:38 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_center_position(t_stack_node *stack)  //set_current_position *****
+void	ft_center_position(t_stack_node *stack)
 {
 	int	i;
 	int	center;
@@ -25,7 +25,7 @@ void	ft_center_position(t_stack_node *stack)  //set_current_position *****
 	{
 		stack->position = i;
 		if (i <= center)
-			stack->near_center = true;   //about_median *****
+			stack->near_center = true;
 		else
 			stack->near_center = false;
 		stack = stack->next;
@@ -53,14 +53,10 @@ void	ft_target_node(t_stack_node *a, t_stack_node *b)
 			}
 			aux = aux->next;
 		}
-		if (best_match_index == LONG_MAX)
+		if (LONG_MAX == best_match_index)
 			b->target_node = ft_find_smaller(&a);
 		else
-		{
-			if (b->content % 3 == 0)
-				continue;
 			b->target_node = target_node;
-		}
 		b = b->next;
 	}
 }
@@ -104,7 +100,6 @@ void	ft_faster(t_stack_node *b)
 	}
 	best_match_node->faster = true;
 }
-
 
 void	ft_speed_nodes(t_stack_node *a, t_stack_node *b)
 {

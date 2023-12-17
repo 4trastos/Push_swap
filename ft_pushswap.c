@@ -6,7 +6,7 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 21:53:01 by davgalle          #+#    #+#             */
-/*   Updated: 2023/12/16 23:15:50 by davgalle         ###   ########.fr       */
+/*   Updated: 2023/12/17 18:35:59 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,22 +20,21 @@ void	ft_stackfour(t_stack_node **a, t_stack_node **b)
 	{
 		smaller = ft_find_smaller(a);
 		if (*a == smaller)
-			pb(b, a);
+			pb(b, a, false);
 		if ((*a)->next == smaller)
 		{
-			ra(a);
-			pb(b, a);
+			ra(a, false);
+			pb(b, a, false);
 		}
 		else if ((*a)->next->next == smaller
 			|| (*a)->next->next->next == smaller)
 		{
 			while (*a != smaller)
-				rra(a);
+				rra(a, false);
 		}
 		ft_stackthree(a);
 	}
-	while (*b)
-		pa(a, b);
+	pa(a, b, false);
 }
 
 void	ft_stackthree(t_stack_node **a)
@@ -44,11 +43,11 @@ void	ft_stackthree(t_stack_node **a)
 
 	biggest = ft_find_bigger(a);
 	if (*a == biggest)
-		ra(a);
+		ra(a, false);
 	else if ((*a)->next == biggest)
-		rra(a);
+		rra(a, false);
 	if ((*a)->content > (*a)->next->content)
-		sa(a);
+		sa(a, false);
 }
 
 void	ft_swap(t_stack_node **a)
@@ -63,16 +62,16 @@ void	ft_swap(t_stack_node **a)
 	}
 }
 
-void	sa(t_stack_node **a)
+void	sa(t_stack_node **a, bool checker)
 {
 	ft_swap(a);
-/*	if (!check)
-		write(1, "sa\n", 3);*/
+	if (!checker)
+		write(1, "sa\n", 3);
 }
 
-void	sb(t_stack_node **b)
+void	sb(t_stack_node **b, bool checker)
 {
 	ft_swap(b);
-/*	if (!check)
-		write(1, "sb\n", 3);*/
+	if (!checker)
+		write(1, "sb\n", 3);
 }

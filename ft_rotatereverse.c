@@ -6,7 +6,7 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 22:13:55 by davgalle          #+#    #+#             */
-/*   Updated: 2023/12/16 17:39:25 by davgalle         ###   ########.fr       */
+/*   Updated: 2023/12/17 18:27:24 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,18 +34,24 @@ void	ft_reverse_rotate(t_stack_node **a)
 	prev->next = NULL;
 }
 
-void	rra(t_stack_node **a)
+void	rra(t_stack_node **a, bool checker)
 {
 	ft_reverse_rotate(a);
+	if (!checker)
+		write(1, "rra\n", 4);
 }
 
-void	rrb(t_stack_node **b)
+void	rrb(t_stack_node **b, bool checker)
 {
 	ft_reverse_rotate(b);
+	if (!checker)
+		write(1, "rrb\n", 4);
 }
 
-void	rrr(t_stack_node **a, t_stack_node **b)
+void	rrr(t_stack_node **a, t_stack_node **b, bool checker)
 {
 	ft_reverse_rotate(a);
 	ft_reverse_rotate(b);
+	if (!checker)
+		write(1, "rrr\n", 4);
 }

@@ -6,43 +6,36 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 11:50:36 by davgalle          #+#    #+#             */
-/*   Updated: 2023/12/16 23:17:24 by davgalle         ###   ########.fr       */
+/*   Updated: 2023/12/17 18:35:32 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	ra_times(t_stack_node **a, int times)
+void	ft_stackfive(t_stack_node **a, t_stack_node **b)
 {
-	while (times--)
-		ra(a);
-	return (1);
-}
+	t_stack_node	*smaller;
 
-static int	rra_times(t_stack_node **a, int times)
-{
-	while (times--)
-		rra(a);
-	return (1);
-}
-
-void	ft_fivenodes(t_stack_node **a, t_stack_node **b)
-{
-	int	len;
-	int	min;
-
-	len = ft_stacklen(*a);
-	min = ft_find_small(a);
-	if (!ft_check_sort(*a))
+	while (!ft_checksort(*a))
 	{
-		if (min == 0 || (min <= len / 2 && (ra_times(a, min) || 1))
-			|| (min > len / 2 && (rra_times(a, len - min) || 1)))
+		smaller = ft_find_smaller(a);
+		if (*a == smaller)
+			pb(b, a, false);
+		if ((*a)->next == smaller)
 		{
-			pb(b, a);
-			ft_stackfour(a, b);
-			pa(a, b);
+			ra(a, false);
+			pb(b, a, false);
 		}
+		else if ((*a)->next->next == smaller
+			|| (*a)->next->next->next == smaller
+			|| (*a)->next->next->next->next == smaller)
+		{
+			while (*a != smaller)
+				rra(a, false);
+		}
+		ft_stackfour(a, b);
 	}
+	pa(a, b, false);
 }
 
 void	ft_move_nodes(t_stack_node **a, t_stack_node **b)
@@ -58,7 +51,7 @@ void	ft_move_nodes(t_stack_node **a, t_stack_node **b)
 		ft_reverse_rotate_both(a, b, faster_node);
 	ft_finish_rotation(b, faster_node, 'b');
 	ft_finish_rotation(a, faster_node->target_node, 'a');
-	pa(a, b);
+	pa(a, b, false);
 }
 
 void	ft_long_sort(t_stack_node **a, t_stack_node **b)
@@ -67,12 +60,10 @@ void	ft_long_sort(t_stack_node **a, t_stack_node **b)
 	int				len;
 
 	len = ft_stacklen(*a);
-	if (len == 5)
-		ft_fivenodes(a, b);
-	else
+	while (len > 3)
 	{
-		while (len-- > 3)
-			pb(b, a);
+		pb(b, a, false);
+		len--;
 	}
 	ft_stackthree(a);
 	while (*b)
@@ -84,8 +75,8 @@ void	ft_long_sort(t_stack_node **a, t_stack_node **b)
 	smaller = ft_find_smaller(a);
 	if (smaller->near_center)
 		while (*a != smaller)
-			ra(a);
+			ra(a, false);
 	else
 		while (*a != smaller)
-			rra(a);
+			rra(a, false);
 }

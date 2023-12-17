@@ -6,13 +6,13 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 10:02:24 by davgalle          #+#    #+#             */
-/*   Updated: 2023/12/16 16:12:33 by davgalle         ###   ########.fr       */
+/*   Updated: 2023/12/17 17:26:44 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack_node	*ft_return_faster(t_stack_node *stack) // Busca el más rápipdo
+t_stack_node	*ft_return_faster(t_stack_node *stack)
 {
 	if (!stack)
 		return (NULL);
@@ -61,9 +61,9 @@ t_stack_node	*ft_find_smaller(t_stack_node **stack)
 int	ft_find_small(t_stack_node **stack)
 {
 	t_stack_node	*aux;
-	int	smaller;
-	int	position;
-	int i;
+	int				smaller;
+	int				position;
+	int				i;
 
 	i = ft_stacklen(*stack);
 	aux = *stack;
@@ -101,4 +101,3 @@ t_stack_node	*ft_find_bigger(t_stack_node **stack)
 	}
 	return (biggest);
 }
-
