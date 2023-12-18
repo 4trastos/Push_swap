@@ -6,7 +6,7 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 14:25:02 by davgalle          #+#    #+#             */
-/*   Updated: 2023/12/14 17:33:54 by davgalle         ###   ########.fr       */
+/*   Updated: 2023/12/18 20:37:29 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	ft_checkarg(const char *s)
 	int	i;
 	int	neg;
 
+	if (s[0] == '\0')
+		return (1);
 	i = 0;
 	neg = 0;
 	while (s[i] != '\0')
@@ -29,9 +31,8 @@ int	ft_checkarg(const char *s)
 			return (1);
 		if (s[i] == '\\' && s[i + 1] >= '1' && s[i + 1] <= '9')
 			return (1);
-		if ((s[i] >= 32 && s[i] <= 47) || (s[i] >= 58 && s[i] <= 64))
-			return (1);
-		else if ((s[i] >= 91 && s[i] <= 96) || (s[i] >= 123 && s[i] <= 126))
+		if ((s[i] >= 32 && s[i] <= 47) || (s[i] >= 58 && s[i] <= 64)
+			|| (s[i] >= 91 && s[i] <= 96) || (s[i] >= 123 && s[i] <= 126))
 			return (1);
 		i++;
 	}

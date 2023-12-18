@@ -6,7 +6,7 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 18:47:27 by davgalle          #+#    #+#             */
-/*   Updated: 2023/12/18 13:44:46 by davgalle         ###   ########.fr       */
+/*   Updated: 2023/12/18 20:52:52 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void	ft_create_stack(t_stack_node **a, char **argv, bool check_argc)
 		content = ft_atoi_dav(argv[i], &status);
 		if (status == 1)
 			ft_error(a, argv, check_argc);
+		if (content > INT_MAX || content < INT_MIN)
+			ft_error(a, argv, check_argc);
 		ft_stack_node(a, ft_create_node(content, i));
 		if (ft_repeat_content(*a, content))
 			ft_error(a, argv, check_argc);
@@ -43,8 +45,11 @@ int	main(int argc, char **argv)
 
 	a = NULL;
 	b = NULL;
-	if (argc == 1 || (argc == 2 && !argv[1][0]))
+	if (argc == 1 || (argc == 2 && argv[1][0] == 0))
+	{
+		write (2, "Error\n", 6);
 		return (1);
+	}
 	else if (argc == 2)
 		argv = ft_split(argv[1], ' ');
 	ft_create_stack(&a, argv + 1, argc == 2);
@@ -54,9 +59,7 @@ int	main(int argc, char **argv)
 			sa(&a);
 		if (ft_stacklen(a) == 3)
 			ft_stackthree(&a);
-		if (ft_stacklen(a) == 4)
-			ft_stackfour(&a, &b);
-		if (ft_stacklen(a) > 4)
+		if (ft_stacklen(a) > 3)
 			ft_long_sort(&a, &b);
 	}
 	ft_free_stack(&a);

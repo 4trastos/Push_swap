@@ -6,7 +6,7 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 19:57:43 by davgalle          #+#    #+#             */
-/*   Updated: 2023/12/10 12:27:17 by davgalle         ###   ########.fr       */
+/*   Updated: 2023/12/18 19:13:11 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static int	ft_count(char *str, int i, int *status)
 {
 	int			num;
-	long long	result;
+	long		result;
 
 	result = 0;
 	while (str[i] != '\0')
