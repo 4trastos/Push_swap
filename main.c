@@ -6,29 +6,11 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 18:47:27 by davgalle          #+#    #+#             */
-/*   Updated: 2023/12/17 18:39:56 by davgalle         ###   ########.fr       */
+/*   Updated: 2023/12/18 13:44:46 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-/*
-void print_stack(const t_stack_node *a)
-{
-    const t_stack_node *aux;
-
-	aux	= a;
-    while (aux != NULL)
-    {
-        printf("%d\n", aux->content);
-        aux = aux->next;
-    }
-}
-
-void	ft_leaks(void)
-{
-	system("leaks -q push_swap");
-}
-*/
 
 void	ft_create_stack(t_stack_node **a, char **argv, bool check_argc)
 {
@@ -56,7 +38,6 @@ void	ft_create_stack(t_stack_node **a, char **argv, bool check_argc)
 
 int	main(int argc, char **argv)
 {
-//	atexit(ft_leaks);
 	t_stack_node	*a;
 	t_stack_node	*b;
 
@@ -70,7 +51,7 @@ int	main(int argc, char **argv)
 	if (!ft_check_sort(a))
 	{
 		if (ft_stacklen(a) == 2)
-			sa(&a, false);
+			sa(&a);
 		if (ft_stacklen(a) == 3)
 			ft_stackthree(&a);
 		if (ft_stacklen(a) == 4)
@@ -78,7 +59,6 @@ int	main(int argc, char **argv)
 		if (ft_stacklen(a) > 4)
 			ft_long_sort(&a, &b);
 	}
-//	print_stack(a);
 	ft_free_stack(&a);
 	return (0);
 }

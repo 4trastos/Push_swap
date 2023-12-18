@@ -6,7 +6,7 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 22:30:01 by davgalle          #+#    #+#             */
-/*   Updated: 2023/12/17 18:34:38 by davgalle         ###   ########.fr       */
+/*   Updated: 2023/12/18 12:50:28 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,9 +103,9 @@ void	ft_faster(t_stack_node *b)
 
 void	ft_speed_nodes(t_stack_node *a, t_stack_node *b)
 {
-	ft_center_position(a); //Busca el Nodo más cercano al centro del stack; 
-	ft_center_position(b); //Busca el Nodo más cercano al cenrto del stack;
-	ft_target_node(a, b);  //Busca el Nodo objetivo hacia el que tiene que apuntar;
-	ft_speed(a, b);       // busca l optimización de movimientos;
-	ft_faster(b);        // Marca el Nodo más rápido;
+	ft_center_position(a);
+	ft_center_position(b);
+	ft_target_node(a, b);
+	ft_speed(a, b);
+	ft_faster(b);
 }

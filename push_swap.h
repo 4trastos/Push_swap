@@ -6,7 +6,7 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/25 16:34:28 by davgalle          #+#    #+#             */
-/*   Updated: 2023/12/17 18:34:04 by davgalle         ###   ########.fr       */
+/*   Updated: 2023/12/18 13:42:40 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,29 +83,29 @@ void			ft_move_nodes(t_stack_node **a, t_stack_node **b);
 //*** movement swap ***
 
 void			ft_swap(t_stack_node **a);
-void			sa(t_stack_node **a, bool checker);
-void			sb(t_stack_node **b, bool checker);
-void			ss(t_stack_node **a, t_stack_node **b, bool checker);
+void			sa(t_stack_node **a);
+void			sb(t_stack_node **b);
+void			ss(t_stack_node **a, t_stack_node **b);
 
 //*** movement push ***
 
 void			ft_push(t_stack_node **dst, t_stack_node **src);
-void			pa(t_stack_node **a, t_stack_node **b, bool checker);
-void			pb(t_stack_node **a, t_stack_node **b, bool checker);
+void			pa(t_stack_node **a, t_stack_node **b);
+void			pb(t_stack_node **a, t_stack_node **b);
 
 //*** movement rotate ***
 
 void			ft_rotate(t_stack_node **a);
-void			ra(t_stack_node **a, bool checker);
-void			rb(t_stack_node **b, bool checker);
-void			rr(t_stack_node **a, t_stack_node **b, bool checker);
-void			rrr(t_stack_node **a, t_stack_node **b, bool checker);
+void			ra(t_stack_node **a);
+void			rb(t_stack_node **b);
+void			rr(t_stack_node **a, t_stack_node **b);
+void			rrr(t_stack_node **a, t_stack_node **b);
 
 //*** movement reverse ***
 
 void			ft_reverse_rotate(t_stack_node **a);
-void			rra(t_stack_node **a, bool checker);
-void			rrb(t_stack_node **b, bool checker);
+void			rra(t_stack_node **a);
+void			rrb(t_stack_node **b);
 void			ft_rotate_both(t_stack_node **a, t_stack_node **b,
 					t_stack_node *faster_node);
 void			ft_reverse_rotate_both(t_stack_node **a, t_stack_node **b,

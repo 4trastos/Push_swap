@@ -6,7 +6,7 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 16:29:39 by davgalle          #+#    #+#             */
-/*   Updated: 2023/12/17 18:31:38 by davgalle         ###   ########.fr       */
+/*   Updated: 2023/12/18 12:32:39 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_rotate_both(t_stack_node **a, t_stack_node **b,
 {
 	while (*a != faster_node->target_node
 		&& *b != faster_node)
-		rr(a, b, false);
+		rr(a, b);
 	ft_center_position(*a);
 	ft_center_position(*b);
 }
@@ -27,7 +27,7 @@ void	ft_reverse_rotate_both(t_stack_node **a, t_stack_node **b,
 {
 	while (*a != faster_node->target_node
 		&& *b != faster_node)
-		rrr(a, b, false);
+		rrr(a, b);
 	ft_center_position(*a);
 	ft_center_position(*b);
 }
@@ -40,16 +40,16 @@ void	ft_finish_rotation(t_stack_node **stack, t_stack_node *top_node,
 		if (stack_name == 'a')
 		{
 			if (top_node->near_center)
-				ra(stack, false);
+				ra(stack);
 			else
-				rra(stack, false);
+				rra(stack);
 		}
 		else if (stack_name == 'b')
 		{
 			if (top_node->near_center)
-				rb(stack, false);
+				rb(stack);
 			else
-				rrb(stack, false);
+				rrb(stack);
 		}
 	}
 }
