@@ -74,6 +74,6 @@ fclean: clean
 re: all clean
 
 bonus: $(BONUS_OBJTS)
-	ar rcs $(NAME) $(BONUS_OBJTS)
+	ar rcs $(NAME_BONUS) $(BONUS_OBJTS)
 
 .PHONY: all clean fclean re
