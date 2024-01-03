@@ -6,7 +6,7 @@
 /*   By: davgalle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 12:32:07 by davgalle          #+#    #+#             */
-/*   Updated: 2024/01/03 15:57:48 by davgalle         ###   ########.fr       */
+/*   Updated: 2024/01/03 16:19:46 by davgalle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,6 @@ void	ft_create_stack(t_stack_node **a, char **argv, bool check_argc)
 			ft_error(a, argv, check_argc);
 		content = ft_atoi_dav(argv[i], &status);
 		if (status == 1)
-			ft_error(a, argv, check_argc);
-		if (content > INT_MAX || content < INT_MIN)
 			ft_error(a, argv, check_argc);
 		ft_stack_node(a, ft_create_node(content, i));
 		if (ft_repeat_content(*a, content))
