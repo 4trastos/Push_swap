@@ -16,7 +16,7 @@ NAME_BONUS = checker
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror -g -O2 #-fsanitize=address -g3
+CFLAGS = -Wall -Wextra -Werror
 
 RM = rm -f
 
